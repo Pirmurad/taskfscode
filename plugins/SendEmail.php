@@ -10,7 +10,6 @@ class SendEmail extends SenderService
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $html = '
-                        <input type="hidden" value="SendEmail">
                    <div class="col-md-4">
                        <label for="email" class="form-label">Email</label>
                        <input id="email" name="email" type="email" class="form-control">
@@ -36,9 +35,11 @@ class SendEmail extends SenderService
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $_POST = json_decode(file_get_contents("php://input"),true);
 
-            $mail = $_POST['data'][0]['value'];
-            $subject = $_POST['data'][1]['value'];
-            $message = $_POST['data'][2]['value'];
+            array_shift($_POST);
+
+            $mail = $_POST[0]['value'];
+            $subject = $_POST[1]['value'];
+            $message = $_POST[2]['value'];
 
             $errors = [];
             $success= true;

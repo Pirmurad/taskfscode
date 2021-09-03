@@ -10,8 +10,6 @@ class Telegram extends SenderService {
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $html = '
-                        <input type="hidden" value="Telegram">
-
                     <div class="col-md-4">
                        <label for="user_id" class="form-label">User ID</label>
                         <input type="text" id="user_id" name="user_id" class="form-control">
@@ -33,8 +31,10 @@ class Telegram extends SenderService {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_POST = json_decode(file_get_contents("php://input"), true);
 
-            $User_id = $_POST['data'][0]['value'];
-            $message = $_POST['data'][1]['value'];
+            array_shift($_POST);
+
+            $User_id = $_POST[0]['value'];
+            $message = $_POST[1]['value'];
 
             $errors = [];
             $success = true;

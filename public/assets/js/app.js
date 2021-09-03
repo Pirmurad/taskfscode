@@ -30,12 +30,10 @@ $(document).on('click','#submit',function(e) {
 
     $(this).prop('disabled', true);
 
-
     var  fields = $('form').serializeArray(),
-         className = $('input[type=hidden]').val(),
          url = 'core/Bootstrap.php';
 
-    axios.post(url, { data : fields, class: className,function: 'send' })
+    axios.post(url, fields)
         .then((response)=>{
           //  console.log(response.data);
             if (response?.data?.success){

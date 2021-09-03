@@ -25,7 +25,7 @@
                <div class="col-md-4">
                    <div class="mb-3">
                        <label for="selectPlugin" class="form-label">Please select one</label>
-                       <select v-model="selected" id="selectPlugin" class="form-select" @change="onChange">
+                       <select v-model="selected" name="class" id="selectPlugin" class="form-select" @change="onChange">
                            <option disabled selected value="">Select</option>
                            <option v-for="plugin in plugins" :value="plugin">{{ plugin }}</option>
                        </select>
